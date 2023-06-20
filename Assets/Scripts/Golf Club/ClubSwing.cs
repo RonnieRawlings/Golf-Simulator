@@ -24,6 +24,28 @@ public class ClubSwing : MonoBehaviour
                 transform.Rotate(Vector3.right * delta.y * 0.5f);
             }
         }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            StartCoroutine(RotateToMinus50());
+        }
+    }
+
+    IEnumerator RotateToMinus50()
+    {
+        float duration = 0.6f;
+        float time = 0;
+        Quaternion startRotation = transform.localRotation;
+        Quaternion endRotation = Quaternion.Euler(-50, transform.localEulerAngles.y, transform.localEulerAngles.z);
+        while (time < duration)
+        {
+            transform.localRotation = Quaternion.Lerp(startRotation, endRotation, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localRotation = endRotation;
+        transform.gameObject.SetActive(false);
     }
 }
 
