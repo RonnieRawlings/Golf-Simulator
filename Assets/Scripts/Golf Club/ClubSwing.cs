@@ -7,6 +7,7 @@ using UnityEngine;
 public class ClubSwing : MonoBehaviour
 {
     private Vector3 lastMousePosition;
+    [SerializeField] private GameObject golfBall;
 
     void Update()
     {
@@ -35,17 +36,28 @@ public class ClubSwing : MonoBehaviour
     {
         float duration = 0.6f;
         float time = 0;
-        Quaternion startRotation = transform.localRotation;
+        float startRotation = transform.eulerAngles.x;
+        Quaternion starting = transform.localRotation;
         Quaternion endRotation = Quaternion.Euler(-50, transform.localEulerAngles.y, transform.localEulerAngles.z);
         while (time < duration)
         {
-            transform.localRotation = Quaternion.Lerp(startRotation, endRotation, time / duration);
+            transform.localRotation = Quaternion.Lerp(starting, endRotation, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
 
         transform.localRotation = endRotation;
         transform.gameObject.SetActive(false);
+
+        float force = Mathf.Abs(startRotation) * 50;
+        Debug.Log(force);
+
+        Rigidbody golfBallRigidbody = golfBall.GetComponent<Rigidbody>();
+
+        Vector3 forceDirection = golfBall.transform.forward;
+        golfBallRigidbody.AddForce(forceDirection * force);
+
+        
     }
 }
 

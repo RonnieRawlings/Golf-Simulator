@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6068843497399203312}
   - component: {fileID: 1259418106366766300}
   - component: {fileID: 3875463555067113948}
+  - component: {fileID: 4261402292079791938}
   m_Layer: 0
   m_Name: Test_GolfBall
   m_TagString: Untagged
@@ -115,8 +116,8 @@ Rigidbody:
   m_GameObject: {fileID: 7137607428876571508}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.8
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -132,4 +133,16 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &4261402292079791938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7137607428876571508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3056a55596a3e79479450b0de9aca1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
