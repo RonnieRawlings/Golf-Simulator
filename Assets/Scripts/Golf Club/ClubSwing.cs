@@ -2,15 +2,18 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ClubSwing : MonoBehaviour
+public class ClubSwing : NetworkBehaviour
 {
     private Vector3 lastMousePosition;
     [SerializeField] private GameObject golfBall;
 
     void Update()
     {
+        if (!IsOwner) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             lastMousePosition = Input.mousePosition;
